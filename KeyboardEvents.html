@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nobita</title>
+</head>
+<body onload="listener()">
+<img src="img/1.png" id="nobita" height="210" width="188"/>
+<img src="img/manga-speech-bubbles-speech-bubble.jpg" id="chatbox" height="320" width="370"/>
+<script>
+    let img = document.getElementById("nobita");
+    let chatBox = document.getElementById("chatbox");
+    img.style.position = "relative";
+    img.style.left = "0px";
+    img.style.top = "0px"
+    chatBox.style.position = "relative"
+    chatBox.style.right = "0px"
+    chatBox.style.visibility = "hidden";
+    function MoveRight()
+    {
+        img.style.left = parseInt(img.style.left) + 10 + "px";
+        chatBox.style.visibility = "hidden";
+    }
+    function MoveLeft()
+    {
+        img.style.left = parseInt(img.style.left) - 10 + "px";
+        chatBox.style.visibility = "hidden";
+    }
+    function MoveUp()
+    {
+        img.style.top = parseInt(img.style.top) - 10 + "px";
+        chatBox.style.visibility = "hidden";
+    }
+    function MoveDown()
+    {
+        img.style.top = parseInt(img.style.top) + 10 + "px";
+        chatBox.style.visibility = "hidden";
+    }
+    function Talk()
+    {
+        chatBox.style.left = img.style.left;
+        chatBox.style.visibility = "visible";
+    }
+    function KeyPress(evt)
+    {
+        switch (evt.keyCode)
+        {
+            case 37 :
+                MoveLeft();
+                break;
+            case 38 :
+                MoveUp();
+                break;
+            case 39 :
+                MoveRight();
+                break;
+            case 40 :
+                MoveDown();
+                break;
+            case 13 :
+                Talk();
+                break;
+
+
+        }
+
+    }
+    function listener()
+    {
+        window.addEventListener("keydown", KeyPress);
+    }
+
+</script>
+
+</body>
+</html>
